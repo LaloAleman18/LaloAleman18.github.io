@@ -43,8 +43,9 @@
 
     <nav class="nav" aria-label="Principal">
       <a href="#work"><span>01</span><span data-i18n="nav.work">Trabajo</span></a>
-      <a href="#about"><span>02</span><span data-i18n="nav.about">Sobre mí</span></a>
-      <a href="#contact"><span>03</span><span data-i18n="nav.contact">Contacto</span></a>
+      <a href="#personales"><span>02</span><span data-i18n="nav.personal">Personales</span></a>
+      <a href="#about"><span>03</span><span data-i18n="nav.about">Sobre mí</span></a>
+      <a href="#contact"><span>04</span><span data-i18n="nav.contact">Contacto</span></a>
     </nav>
 
     <button class="lang" type="button" id="lang" aria-label="Cambiar idioma a inglés">
@@ -178,9 +179,36 @@
       </div>
     </section>
 
+    <section id="personales" class="work personales" aria-labelledby="personales-title">
+      <header class="section-head">
+        <p class="kicker mono" data-i18n="personales.kicker">02 — Proyectos personales</p>
+        <h2 id="personales-title" class="section-title reveal" data-i18n="personales.title">Aprender haciendo, de principio a fin.</h2>
+        <p class="section-note" data-i18n="personales.note">Cinco proyectos con su README y sus pruebas. Se publican a medida que se terminan.</p>
+      </header>
+
+      <div class="grid">
+        <a class="project reveal" href="https://github.com/LaloAleman18/LaloAleman18.github.io/tree/main/proyectos/taskflow-api" target="_blank" rel="noopener">
+          <figure class="project__plate project__plate--terminal">
+            <img src="./assets/img/taskflow.svg" alt="Terminal con respuestas reales de la API TaskFlow" width="1200" height="900">
+            <figcaption class="mono">01 / 05</figcaption>
+          </figure>
+          <div class="project__body">
+            <div class="project__top">
+              <h3>TaskFlow API</h3>
+              <span class="mono project__meta" data-i18n="p5.meta">API REST</span>
+            </div>
+            <p class="project__sub" data-i18n="p5.sub">Tareas que viven en un archivo JSON</p>
+            <p class="project__desc" data-i18n="p5.desc">Node.js y Express con validación, filtros, códigos HTTP correctos y pruebas con node:test. Sin base de datos externa.</p>
+            <ul class="tags mono"><li>Node.js</li><li>Express</li><li>REST</li></ul>
+            <span class="project__go" aria-hidden="true">→</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <section id="about" class="about" aria-labelledby="about-title">
       <div class="about__aside">
-        <p class="kicker mono" data-i18n="about.kicker">02 — Sobre mí</p>
+        <p class="kicker mono" data-i18n="about.kicker">03 — Sobre mí</p>
         <h2 id="about-title" class="section-title reveal" data-i18n="about.title">Me gusta el tramo incómodo del software.</h2>
         <div class="seal" aria-hidden="true">
           <svg viewBox="0 0 120 120" role="presentation">
@@ -219,7 +247,7 @@
     </section>
 
     <section id="contact" class="contact" aria-labelledby="contact-title">
-      <p class="kicker mono" data-i18n="contact.kicker">03 — Contacto</p>
+      <p class="kicker mono" data-i18n="contact.kicker">04 — Contacto</p>
       <h2 id="contact-title" class="contact__title reveal" data-i18n="contact.title">¿Tienes una vacante de estadía o un proyecto en mente?</h2>
       <div class="contact__row">
         <p class="contact__body" data-i18n="contact.body">Estoy buscando prácticas profesionales donde pueda aportar desde el primer sprint y seguir aprendiendo de gente que lleva más camino.</p>

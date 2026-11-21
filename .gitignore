@@ -1,0 +1,5 @@
+node_modules/
+proyectos/**/tareas.json
+proyectos/**/tareas.json.tmp
+*.log
+.DS_Store

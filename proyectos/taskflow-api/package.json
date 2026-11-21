@@ -1,0 +1,17 @@
+{
+  "name": "taskflow-api",
+  "version": "1.0.0",
+  "description": "API REST de tareas con persistencia en JSON, hecha con Node.js y Express.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "license": "MIT"
+}
