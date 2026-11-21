@@ -176,17 +176,6 @@ ul { padding: 0; list-style: none; }
   position: relative;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: calc(66.666% + 12px);
-  width: 1px;
-  background: var(--line-soft);
-  pointer-events: none;
-}
-
 .hero__top {
   grid-column: 1 / -1;
   display: flex;
@@ -671,7 +660,6 @@ ul { padding: 0; list-style: none; }
 @media (max-width: 1100px) {
   .hero__title { grid-column: 1 / 10; }
   .sheet { grid-column: 10 / 13; }
-  .hero::after { display: none; }
   .about__aside { grid-column: 1 / 5; }
   .about__body { grid-column: 5 / 13; }
   .project { grid-column: span 6; }
