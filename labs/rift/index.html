@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Rift — arcade de una sola pantalla</title>
+  <meta name="description" content="Juego arcade en canvas: oleadas procedurales, partículas y sonido sintetizado. Sin assets externos.">
+  <meta name="theme-color" content="#07060d">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <canvas id="game" role="img" aria-label="Campo de juego de Rift. Usa las flechas o WASD para moverte; el disparo es automático."></canvas>
+
+    <div class="crt" aria-hidden="true"></div>
+
+    <header class="hud" id="hud">
+      <div class="hud__score">
+        <span class="mono">Puntos</span>
+        <b id="score">000000</b>
+      </div>
+      <div class="hud__wave mono">Oleada <b id="wave">01</b></div>
+      <div class="hud__right">
+        <div class="hearts" id="hearts" role="img" aria-label="Tres vidas">
+          <i></i><i></i><i></i>
+        </div>
+        <button class="icon" type="button" id="mute" aria-label="Silenciar sonido" aria-pressed="false">
+          <svg viewBox="0 0 20 20" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M3 7.5h3L10 4v12L6 12.5H3z"/>
+            <path d="M13 7a4.5 4.5 0 0 1 0 6M15.5 4.5a8 8 0 0 1 0 11" class="wave-icon"/>
+          </svg>
+        </button>
+        <button class="icon" type="button" id="pause" aria-label="Pausar">
+          <svg viewBox="0 0 20 20" width="15" height="15" fill="currentColor" aria-hidden="true">
+            <rect x="5" y="4" width="3" height="12"/><rect x="12" y="4" width="3" height="12"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <section class="intro" id="intro">
+      <p class="eyebrow mono">Arcade · una pantalla · 2026</p>
+      <h1 class="title">RIFT<span aria-hidden="true">.</span></h1>
+      <p class="tagline">Sobrevive a las oleadas.<br>El vacío no se acaba.</p>
+
+      <div class="controls mono">
+        <span><b>WASD</b> / flechas · mover</span>
+        <span><b>Espacio</b> · dash</span>
+        <span><b>P</b> · pausa</span>
+        <span class="controls__touch"><b>Arrastra</b> · mover</span>
+      </div>
+
+      <button class="start" type="button" id="start">
+        <span>Empezar</span>
+        <span aria-hidden="true">↗</span>
+      </button>
+      <p class="best mono">Récord <b id="best-intro">000000</b></p>
+    </section>
+
+    <section class="over" id="over" hidden aria-labelledby="over-title">
+      <p class="eyebrow mono">Fin de la transmisión</p>
+      <h2 id="over-title" class="over__title">Otra vez.</h2>
+      <div class="over__stats">
+        <div><span class="mono">Puntos</span><b id="final-score">000000</b></div>
+        <div><span class="mono">Oleada</span><b id="final-wave">01</b></div>
+        <div><span class="mono">Récord</span><b id="final-best">000000</b></div>
+      </div>
+      <button class="start" type="button" id="restart"><span>Reintentar</span><span aria-hidden="true">↻</span></button>
+      <p class="over__hint mono">o pulsa <b>Enter</b></p>
+    </section>
+
+    <section class="pause" id="pause-screen" hidden aria-labelledby="pause-title">
+      <p class="mono">Transmisión en pausa</p>
+      <h2 id="pause-title">Respira.</h2>
+      <button class="start" type="button" id="resume"><span>Continuar</span><span aria-hidden="true">↗</span></button>
+    </section>
+
+    <button class="dash" type="button" id="dash" aria-label="Usar dash">Dash</button>
+    <a class="back mono" href="../../">← Portafolio</a>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>

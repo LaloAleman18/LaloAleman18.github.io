@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>José Eduardo Casarrubias Aleman — Desarrollo de software</title>
+  <meta name="description" content="Portafolio de José Eduardo Casarrubias Aleman. Productos web y móviles: PWAs offline, dashboards, herramientas para developers y juegos en canvas.">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://laloaleman18.github.io/">
+  <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./assets/img/favicon.svg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="José Eduardo Casarrubias Aleman — Portafolio">
+  <meta property="og:description" content="Productos web y móviles. PWAs offline, dashboards, herramientas para developers y juegos en canvas.">
+  <meta property="og:url" content="https://laloaleman18.github.io/">
+  <meta property="og:image" content="https://laloaleman18.github.io/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Portafolio de José Eduardo Casarrubias Aleman">
+  <meta property="og:site_name" content="José Eduardo Casarrubias Aleman">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://laloaleman18.github.io/assets/img/og.png">
+
+  <link rel="preload" href="./assets/fonts/instrument-serif-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/inter-tight-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./assets/fonts/fonts.css">
+  <link rel="stylesheet" href="./assets/css/site.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="head">
+    <a class="mark" href="./" aria-label="Inicio">
+      <span class="mark__glyph" aria-hidden="true">J</span>
+      <span class="mark__text">José Eduardo<br>Casarrubias Aleman</span>
+    </a>
+
+    <nav class="nav" aria-label="Principal">
+      <a href="#work"><span>01</span><span data-i18n="nav.work">Trabajo</span></a>
+      <a href="#about"><span>02</span><span data-i18n="nav.about">Sobre mí</span></a>
+      <a href="#contact"><span>03</span><span data-i18n="nav.contact">Contacto</span></a>
+    </nav>
+
+    <button class="lang" type="button" id="lang" aria-label="Cambiar idioma a inglés">
+      <span data-lang="es">ES</span><span class="lang__sep" aria-hidden="true">/</span><span data-lang="en">EN</span>
+    </button>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__top">
+        <p class="status"><span class="status__dot" aria-hidden="true"></span><span data-i18n="hero.status">Disponible para estadías · 2026</span></p>
+        <p class="hero__place mono">México</p>
+      </div>
+
+      <h1 id="hero-title" class="hero__title reveal">
+        <span data-i18n="hero.line1">Software que</span>
+        <em data-i18n="hero.em">aguanta</em>
+        <span data-i18n="hero.line2">la vida real.</span>
+      </h1>
+
+      <div class="hero__body">
+        <p class="hero__lead reveal" style="--d:120ms" data-i18n="hero.lead">
+          Diseño y construyo productos web y móviles. Me interesa lo que pasa cuando la red falla, el usuario tiene prisa o el dato no cabe en una tarjeta.
+        </p>
+        <div class="hero__actions reveal" style="--d:200ms">
+          <a class="btn" href="#work"><span data-i18n="hero.cta1">Ver proyectos</span><span class="btn__arrow" aria-hidden="true">↓</span></a>
+          <a class="link" href="https://github.com/LaloAleman18" target="_blank" rel="noopener">
+            <span data-i18n="hero.cta2">GitHub</span><span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <aside class="sheet reveal" style="--d:280ms" aria-labelledby="sheet-title">
+        <div class="sheet__head">
+          <h2 id="sheet-title" class="mono" data-i18n="sheet.title">Ficha rápida</h2>
+          <span class="mono">JECA—26</span>
+        </div>
+        <dl class="sheet__rows">
+          <div><dt data-i18n="sheet.edu.k">Formación</dt><dd data-i18n="sheet.edu.v">Desarrollo de software · UTEZ</dd></div>
+          <div><dt data-i18n="sheet.focus.k">Foco</dt><dd data-i18n="sheet.focus.v">Producto web, datos y móvil</dd></div>
+          <div><dt data-i18n="sheet.stack.k">Stack</dt><dd data-i18n="sheet.stack.v">JS/TS · Dart · C# · SQL</dd></div>
+          <div><dt data-i18n="sheet.base.k">Base</dt><dd data-i18n="sheet.base.v">México</dd></div>
+          <div><dt data-i18n="sheet.status.k">Estado</dt><dd data-i18n="sheet.status.v">Abierto a estadías</dd></div>
+        </dl>
+        <p class="sheet__note mono" data-i18n="sheet.note">Sin frameworks en producción.</p>
+      </aside>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>JavaScript</span><span>TypeScript</span><span>Flutter</span><span>Node.js</span><span>SQL</span><span>C#</span><span>SVG</span><span>Canvas</span><span>IndexedDB</span><span>Service Workers</span>
+        <span>JavaScript</span><span>TypeScript</span><span>Flutter</span><span>Node.js</span><span>SQL</span><span>C#</span><span>SVG</span><span>Canvas</span><span>IndexedDB</span><span>Service Workers</span>
+      </div>
+    </div>
+
+    <section id="work" class="work" aria-labelledby="work-title">
+      <header class="section-head">
+        <p class="kicker mono" data-i18n="work.kicker">01 — Trabajo seleccionado</p>
+        <h2 id="work-title" class="section-title reveal" data-i18n="work.title">Cuatro proyectos, cuatro problemas distintos.</h2>
+        <p class="section-note" data-i18n="work.note">Todos con demo o caso de estudio. Nada de mockups que no existen.</p>
+      </header>
+
+      <div class="grid">
+        <a class="project project--wide reveal" href="./work/outbox.html">
+          <figure class="project__plate project__plate--outbox">
+            <img src="./assets/img/outbox.png" alt="Interfaz de la aplicación de pedidos Outbox" width="1600" height="1000" loading="eager">
+            <figcaption class="mono">01 / 04</figcaption>
+          </figure>
+          <div class="project__body">
+            <div class="project__top">
+              <h3>Outbox</h3>
+              <span class="mono project__meta" data-i18n="p1.meta">Caso de estudio</span>
+            </div>
+            <p class="project__sub" data-i18n="p1.sub">Pedidos que no se pierden</p>
+            <p class="project__desc" data-i18n="p1.desc">PWA de pedidos para una tostaduría. La venta se guarda en IndexedDB antes de salir a la red; el Service Worker la sincroniza cuando vuelve la conexión.</p>
+            <ul class="tags mono"><li>JavaScript</li><li>IndexedDB</li><li>Service Worker</li></ul>
+            <span class="project__go" aria-hidden="true">→</span>
+          </div>
+        </a>
+
+        <a class="project reveal" href="./labs/terra/">
+          <figure class="project__plate project__plate--terra">
+            <img src="./assets/img/terra.png" alt="Panel de rendimiento de Terra con gráficas y tabla de lotes" width="1600" height="1200" loading="eager">
+            <figcaption class="mono">02 / 04</figcaption>
+          </figure>
+          <div class="project__body">
+            <div class="project__top">
+              <h3>Terra</h3>
+              <span class="mono project__meta" data-i18n="p2.meta">Demo en vivo</span>
+            </div>
+            <p class="project__sub" data-i18n="p2.sub">Panel de rendimiento cafetalero</p>
+            <p class="project__desc" data-i18n="p2.desc">Dashboard para una cooperativa: series de tiempo, filtros por finca y exportación a CSV. Datos de demostración generados con una semilla fija.</p>
+            <ul class="tags mono"><li>SVG</li><li>Datos</li><li>Accesibilidad</li></ul>
+            <span class="project__go" aria-hidden="true">→</span>
+          </div>
+        </a>
+
+        <a class="project reveal" href="./labs/rift/">
+          <figure class="project__plate project__plate--rift">
+            <img src="./assets/img/rift.png" alt="Pantalla de inicio del juego Rift con tipografía neón" width="1600" height="1200" loading="eager">
+            <figcaption class="mono">03 / 04</figcaption>
+          </figure>
+          <div class="project__body">
+            <div class="project__top">
+              <h3>Rift</h3>
+              <span class="mono project__meta" data-i18n="p3.meta">Juego</span>
+            </div>
+            <p class="project__sub" data-i18n="p3.sub">Arcade de una sola pantalla</p>
+            <p class="project__desc" data-i18n="p3.desc">Juego endless en canvas: oleadas procedurales, partículas y sonido sintetizado. Sin assets externos; todo se dibuja en tiempo real.</p>
+            <ul class="tags mono"><li>Canvas</li><li>WebAudio</li><li>Game loop</li></ul>
+            <span class="project__go" aria-hidden="true">→</span>
+          </div>
+        </a>
+
+        <a class="project reveal" href="./labs/lex/">
+          <figure class="project__plate project__plate--lex">
+            <img src="./assets/img/lex.png" alt="Herramienta Lex convirtiendo JSON a interfaces TypeScript" width="1600" height="1200" loading="eager">
+            <figcaption class="mono">04 / 04</figcaption>
+          </figure>
+          <div class="project__body">
+            <div class="project__top">
+              <h3>Lex</h3>
+              <span class="mono project__meta" data-i18n="p4.meta">Herramienta</span>
+            </div>
+            <p class="project__sub" data-i18n="p4.sub">JSON a TypeScript en un segundo</p>
+            <p class="project__desc" data-i18n="p4.desc">Herramienta para inspeccionar payloads y generar interfaces, CSV o tabla. Detecta campos opcionales y une arrays; corre completo en el navegador.</p>
+            <ul class="tags mono"><li>Parsing</li><li>DX</li><li>Cero backend</li></ul>
+            <span class="project__go" aria-hidden="true">→</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-title">
+      <div class="about__aside">
+        <p class="kicker mono" data-i18n="about.kicker">02 — Sobre mí</p>
+        <h2 id="about-title" class="section-title reveal" data-i18n="about.title">Me gusta el tramo incómodo del software.</h2>
+        <div class="seal" aria-hidden="true">
+          <svg viewBox="0 0 120 120" role="presentation">
+            <defs><path id="circlePath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+            <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width=".6" opacity=".5"/>
+            <circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" stroke-width=".6" opacity=".35"/>
+            <text class="seal__text"><textPath href="#circlePath">JOSÉ EDUARDO · DESARROLLO &amp; DISEÑO · 2026 · </textPath></text>
+            <text x="60" y="66" text-anchor="middle" class="seal__initials">JECA</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="about__body">
+        <p class="about__lead reveal" data-i18n="about.p1">Soy José Eduardo Casarrubias Aleman. Estudio desarrollo de software en la UTEZ y me formé haciendo proyectos completos: de la pantalla a la base de datos.</p>
+        <p data-i18n="about.p2">Me interesa la parte que casi nadie presume: la cola que reintenta, el estado vacío que explica, el error que no culpa al usuario. También dibujo interfaces; creo que un buen diseño se nota cuando no tienes que preguntar dónde hacer clic.</p>
+        <p data-i18n="about.p3">Trabajo con JavaScript y TypeScript, Dart/Flutter, C# y SQL. He entregado una PWA offline, un cliente móvil con pruebas automatizadas y prototipos jugables en Unity.</p>
+
+        <div class="principles" aria-label="Principios de trabajo">
+          <article>
+            <span class="mono">01</span>
+            <h3 data-i18n="pr1.title">Primero el problema</h3>
+            <p data-i18n="pr1.body">Antes de elegir herramienta, escribo qué tiene que pasar y qué no puede fallar.</p>
+          </article>
+          <article>
+            <span class="mono">02</span>
+            <h3 data-i18n="pr2.title">Interfaces con criterio</h3>
+            <p data-i18n="pr2.body">Jerarquía, contraste y ritmo. Si hay que explicar dónde hacer clic, el diseño falló.</p>
+          </article>
+          <article>
+            <span class="mono">03</span>
+            <h3 data-i18n="pr3.title">Código que se defiende</h3>
+            <p data-i18n="pr3.body">Nombres claros, estados explícitos y pruebas donde duele. Puedo explicar cada decisión.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <p class="kicker mono" data-i18n="contact.kicker">03 — Contacto</p>
+      <h2 id="contact-title" class="contact__title reveal" data-i18n="contact.title">¿Tienes una vacante de estadía o un proyecto en mente?</h2>
+      <div class="contact__row">
+        <p class="contact__body" data-i18n="contact.body">Estoy buscando prácticas profesionales donde pueda aportar desde el primer sprint y seguir aprendiendo de gente que lleva más camino.</p>
+        <a class="contact__link" href="https://github.com/LaloAleman18" target="_blank" rel="noopener">
+          <span data-i18n="contact.cta">Escríbeme por GitHub</span><span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <p class="contact__note mono" data-i18n="contact.note">Respondo rápido. También puedes ver el código de este sitio.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__top">
+      <p class="mono" data-i18n="foot.colophon">Sitio escrito a mano en HTML, CSS y JavaScript. Sin frameworks, sin cookies, sin rastreadores. Tipografías: Instrument Serif, Inter Tight e IBM Plex Mono.</p>
+      <div class="foot__meta mono">
+        <span><span data-i18n="foot.local">Hora local</span> <time id="clock">—</time></span>
+        <span><span data-i18n="foot.updated">Actualizado</span> 2026.11</span>
+      </div>
+    </div>
+    <div class="foot__bottom mono">
+      <span>© 2026 José Eduardo Casarrubias Aleman</span>
+      <a href="https://github.com/LaloAleman18/LaloAleman18.github.io" target="_blank" rel="noopener">Código fuente ↗</a>
+    </div>
+  </footer>
+
+  <script src="./assets/js/site.js"></script>
+</body>
+</html>

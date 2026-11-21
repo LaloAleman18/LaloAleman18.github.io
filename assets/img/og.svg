@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#0b0b0c"/>
+  <g stroke="#ece9e2" stroke-opacity=".14">
+    <line x1="72" y1="0" x2="72" y2="630"/>
+    <line x1="1128" y1="0" x2="1128" y2="630"/>
+    <line x1="0" y1="92" x2="1200" y2="92"/>
+    <line x1="0" y1="538" x2="1200" y2="538"/>
+  </g>
+  <text x="72" y="60" font-family="'Courier New', monospace" font-size="15" letter-spacing="4" fill="#9c988e">PORTAFOLIO — 2026</text>
+  <text x="1128" y="60" text-anchor="end" font-family="'Courier New', monospace" font-size="15" letter-spacing="4" fill="#d9a15f">DISPONIBLE PARA ESTADÍAS</text>
+  <text x="72" y="250" font-family="Georgia, serif" font-size="92" fill="#ece9e2">Software que</text>
+  <text x="72" y="350" font-family="Georgia, serif" font-size="92" font-style="italic" fill="#d9a15f">aguanta</text>
+  <text x="72" y="450" font-family="Georgia, serif" font-size="92" fill="#ece9e2">la vida real.</text>
+  <text x="72" y="590" font-family="'Courier New', monospace" font-size="17" letter-spacing="3" fill="#9c988e">JOSÉ EDUARDO CASARRUBIAS ALEMAN</text>
+  <text x="1128" y="590" text-anchor="end" font-family="'Courier New', monospace" font-size="17" letter-spacing="3" fill="#6d6a63">LALOALEMAN18.GITHUB.IO</text>
+</svg>

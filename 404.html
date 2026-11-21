@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 — Página no encontrada | José Eduardo Casarrubias Aleman</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/fonts/instrument-serif-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./assets/fonts/fonts.css">
+  <link rel="stylesheet" href="./assets/css/site.css">
+  <style>
+    .notfound { max-width: var(--max); margin: 0 auto; padding: clamp(80px, 14vw, 180px) var(--pad); }
+    .notfound__code { font-family: var(--serif); font-size: clamp(7rem, 28vw, 22rem); line-height: .75; letter-spacing: -.06em; color: var(--accent); }
+    .notfound h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.05; margin: 36px 0 14px; }
+    .notfound p { color: var(--dim); font-size: 15px; line-height: 1.65; max-width: 48ch; }
+    .notfound p + p { margin-top: 10px; }
+    .notfound .btn { margin-top: 34px; }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="head">
+    <a class="mark" href="./" aria-label="Inicio">
+      <span class="mark__glyph" aria-hidden="true">J</span>
+      <span class="mark__text">José Eduardo<br>Casarrubias Aleman</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="./#work"><span>01</span><span>Trabajo</span></a>
+      <a href="./#about"><span>02</span><span>Sobre mí</span></a>
+      <a href="./#contact"><span>03</span><span>Contacto</span></a>
+    </nav>
+    <span class="lang__sep mono" aria-hidden="true">ES / EN</span>
+  </header>
+
+  <main class="notfound">
+    <p class="notfound__code" aria-hidden="true">404</p>
+    <h1>Esta página no existe.</h1>
+    <p>Es posible que el enlace haya cambiado o que hayas escrito una ruta distinta. El portafolio completo sigue en la página principal.</p>
+    <p lang="en">This page does not exist. The link may have changed or the address may be misspelled. The full portfolio is on the home page.</p>
+    <a class="btn" href="./"><span>Volver al inicio</span><span class="btn__arrow" aria-hidden="true">→</span></a>
+  </main>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Outbox — Caso de estudio | José Eduardo Casarrubias Aleman</title>
+  <meta name="description" content="Caso de estudio de Outbox: pedidos offline con IndexedDB, patrón Outbox y Background Sync, escrito en JavaScript sin dependencias.">
+  <meta name="theme-color" content="#0b0b0c">
+  <link rel="canonical" href="https://laloaleman18.github.io/work/outbox.html">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Outbox — Caso de estudio">
+  <meta property="og:description" content="Una PWA de pedidos donde el dato se guarda antes de intentar salir a la red. IndexedDB, Service Worker y Background Sync sin dependencias.">
+  <meta property="og:url" content="https://laloaleman18.github.io/work/outbox.html">
+  <meta property="og:image" content="https://laloaleman18.github.io/assets/img/outbox.png">
+
+  <link rel="preload" href="../assets/fonts/instrument-serif-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/inter-tight-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/case.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="head">
+    <a class="mark" href="../" aria-label="Inicio">
+      <span class="mark__glyph" aria-hidden="true">J</span>
+      <span class="mark__text">José Eduardo<br>Casarrubias Aleman</span>
+    </a>
+
+    <nav class="nav" aria-label="Principal">
+      <a href="../#work"><span>01</span><span data-i18n="nav.work">Trabajo</span></a>
+      <a href="../#about"><span>02</span><span data-i18n="nav.about">Sobre mí</span></a>
+      <a href="../#contact"><span>03</span><span data-i18n="nav.contact">Contacto</span></a>
+    </nav>
+
+    <button class="lang" type="button" id="lang" aria-label="Cambiar idioma a inglés">
+      <span data-lang="es">ES</span><span class="lang__sep" aria-hidden="true">/</span><span data-lang="en">EN</span>
+    </button>
+  </header>
+
+  <main id="main">
+    <div class="case">
+      <p class="crumb mono"><a href="../">Portafolio</a><span aria-hidden="true">/</span><span data-i18n="crumb">Caso de estudio</span></p>
+
+      <header class="case__head">
+        <div class="case__left">
+          <p class="case__kicker mono" data-i18n="case.kicker">Proyecto 01 / 04 · Persistencia offline</p>
+          <h1 class="case__title">Outbox<em>.</em></h1>
+          <p class="case__sub" data-i18n="case.sub">Pedidos que sobreviven a una red que falla.</p>
+          <p class="case__lead" data-i18n="case.lead">Una tostaduría toma pedidos desde una tablet. La conexión va y viene, y el servidor tampoco es garantía. La regla de diseño fue una sola: el pedido se guarda antes de intentar salir.</p>
+          <div class="case__actions">
+            <a class="btn" href="https://laloaleman18.github.io/outbox-offline/" target="_blank" rel="noopener"><span data-i18n="action.demo">Abrir demo</span><span class="btn__arrow" aria-hidden="true">↗</span></a>
+            <a class="link" href="https://github.com/LaloAleman18/outbox-offline" target="_blank" rel="noopener"><span data-i18n="action.repo">Ver código</span><span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <div class="case__right">
+          <dl>
+            <div class="fact"><dt data-i18n="fact.role.k">Rol</dt><dd data-i18n="fact.role.v">Diseño de producto y desarrollo</dd></div>
+            <div class="fact"><dt data-i18n="fact.year.k">Año</dt><dd>2026</dd></div>
+            <div class="fact"><dt data-i18n="fact.context.k">Contexto</dt><dd data-i18n="fact.context.v">Proyecto académico · UTEZ</dd></div>
+            <div class="fact"><dt data-i18n="fact.stack.k">Stack</dt><dd data-i18n="fact.stack.v">JavaScript, IndexedDB, Service Worker</dd></div>
+            <div class="fact"><dt data-i18n="fact.status.k">Estado</dt><dd data-i18n="fact.status.v">Demo pública y código abierto</dd></div>
+          </dl>
+        </div>
+      </header>
+
+      <figure class="case__hero">
+        <img src="../assets/img/outbox.png" alt="Panel de pedidos Outbox con tres pedidos enviados y la cola sincronizada" width="1600" height="1000">
+        <figcaption><span>Fig. 01 — <span data-i18n="hero.caption">Cola sincronizada: tres pedidos enviados, cero pendientes</span></span><span>Outbox / 2026</span></figcaption>
+      </figure>
+
+      <div class="case__layout">
+        <aside class="case__index" aria-label="Índice del caso">
+          <p class="mono" data-i18n="index.title">En esta página</p>
+          <a href="#problema"><span>01</span><span data-i18n="index.1">El problema</span></a>
+          <a href="#flujo"><span>02</span><span data-i18n="index.2">Cómo funciona</span></a>
+          <a href="#decisiones"><span>03</span><span data-i18n="index.3">Decisiones</span></a>
+          <a href="#prueba"><span>04</span><span data-i18n="index.4">Pruébalo</span></a>
+          <a href="#siguiente"><span>05</span><span data-i18n="index.5">Qué sigue</span></a>
+        </aside>
+
+        <div class="case__body">
+          <section class="chapter" id="problema" aria-labelledby="problema-title">
+            <div class="chapter__head"><span class="chapter__num mono">01</span><h2 id="problema-title" data-i18n="ch1.title">El problema</h2></div>
+            <p data-i18n="ch1.p1">En un mostrador no hay tiempo para esperar una respuesta del servidor. Si la red cae a mitad de un pedido, una implementación ingenua pierde la venta o deja al empleado rellenando el formulario dos veces.</p>
+            <p data-i18n="ch1.p2">El reto era que la interfaz respondiera al instante, que el dato sobreviviera al cierre de la pestaña y que el envío se reanudara sin intervención cuando volviera la conexión. Todo eso sin librerías: la consigna pedía usar las APIs del navegador directamente.</p>
+
+            <div class="constraints">
+              <article><span class="mono">A</span><h3 data-i18n="c1.title">Red intermitente</h3><p data-i18n="c1.body">El POST puede fallar por caída de red, timeout o respuesta 500. La interfaz no debe depender de ese resultado para aceptar el pedido.</p></article>
+              <article><span class="mono">B</span><h3 data-i18n="c2.title">Dato persistente</h3><p data-i18n="c2.body">Guardar en memoria o en <code class="inline">localStorage</code> no basta: hacían falta transacciones, índices y consultas por estado.</p></article>
+              <article><span class="mono">C</span><h3 data-i18n="c3.title">Backend de prueba</h3><p data-i18n="c3.body">No había servicio propio. La misma app debía funcionar con un mock local y con una API pública de pruebas en Pages.</p></article>
+            </div>
+
+            <blockquote class="pull" data-i18n="pull">El pedido se guarda antes de intentar salir: eso es el Outbox.</blockquote>
+          </section>
+
+          <section class="chapter" id="flujo" aria-labelledby="flujo-title">
+            <div class="chapter__head"><span class="chapter__num mono">02</span><h2 id="flujo-title" data-i18n="ch2.title">Cómo funciona</h2></div>
+            <p data-i18n="ch2.p1">La página nunca hace el <code class="inline">fetch</code>. Solo encola y avisa. El motor de envío vive en el Service Worker, así que puede terminar el trabajo aunque la pestaña ya no esté abierta.</p>
+            <p data-i18n="ch2.p2">Cuatro piezas, una sola dirección: la interfaz escribe, la base guarda, el worker envía y la interfaz vuelve a leer el resultado.</p>
+
+            <div class="flow">
+              <article class="flow__node">
+                <span class="mono">01 / <span data-i18n="f1.tag">Interfaz</span></span>
+                <h3>app.js</h3>
+                <p data-i18n="f1.body">El formulario valida y llama a <code class="inline">Outbox.enqueue()</code>. La respuesta es inmediata.</p>
+                <code>enqueue(payload)</code>
+              </article>
+              <article class="flow__node">
+                <span class="mono">02 / <span data-i18n="f2.tag">Cola local</span></span>
+                <h3>IndexedDB</h3>
+                <p data-i18n="f2.body">El registro nace como <code class="inline">pendiente</code>, con clientId, payload, intentos y fechas.</p>
+                <code>outbox-db / outbox</code>
+              </article>
+              <article class="flow__node">
+                <span class="mono">03 / <span data-i18n="f3.tag">Motor de envío</span></span>
+                <h3>sw.js</h3>
+                <p data-i18n="f3.body">Lee los pendientes en orden FIFO, hace el POST y marca <code class="inline">enviado</code> o <code class="inline">error</code>.</p>
+                <code>sync · FLUSH_OUTBOX</code>
+              </article>
+              <article class="flow__node">
+                <span class="mono">04 / <span data-i18n="f4.tag">Respuesta</span></span>
+                <h3>postMessage</h3>
+                <p data-i18n="f4.body">El worker avisa a las pestañas abiertas; la UI refresca contadores y registro de actividad.</p>
+                <code>OUTBOX_SYNC_RESULT</code>
+              </article>
+            </div>
+
+            <div class="states" aria-label="Estados de un pedido">
+              <span class="state" data-i18n="st.pending">Pendiente</span><span class="states__arrow" aria-hidden="true">→</span>
+              <span class="state" data-i18n="st.syncing">Sincronizando</span><span class="states__arrow" aria-hidden="true">→</span>
+              <span class="state state--ok" data-i18n="st.sent">Enviado</span>
+              <span class="states__arrow" aria-hidden="true">↘</span>
+              <span class="state state--bad" data-i18n="st.error">Error · reintenta</span>
+              <p class="states__note" data-i18n="st.note">En Chromium el disparador es Background Sync (tag <code class="inline">outbox-sync</code>). En Safari, donde no existe SyncManager, el evento <code class="inline">online</code> pide el vaciado por mensaje. La lógica de envío es la misma en los dos casos.</p>
+            </div>
+          </section>
+
+          <section class="chapter" id="decisiones" aria-labelledby="decisiones-title">
+            <div class="chapter__head"><span class="chapter__num mono">03</span><h2 id="decisiones-title" data-i18n="ch3.title">Decisiones</h2></div>
+            <p data-i18n="ch3.p1">Cada decisión responde a una falla concreta. Ninguna está ahí para llenar una diapositiva.</p>
+
+            <div class="decision"><span class="mono">01</span><div><h3 data-i18n="d1.title">Outbox primero, red después</h3><p data-i18n="d1.body">Si el envío falla, el pedido ya está a salvo en IndexedDB. La confirmación al usuario no espera a la red; la sincronización es responsable del resto.</p></div></div>
+            <div class="decision"><span class="mono">02</span><div><h3 data-i18n="d2.title">Un clientId por pedido</h3><p data-i18n="d2.body">Cada registro lleva un UUID con índice único. El backend puede usarlo como clave de idempotencia y descartar duplicados si el reintento llega dos veces.</p></div></div>
+            <div class="decision"><span class="mono">03</span><div><h3 data-i18n="d3.title">Lectura y escritura en la misma transacción</h3><p data-i18n="d3.body">El wrapper propio de IndexedDB resuelve la promesa en <code class="inline">oncomplete</code>, no en el éxito del request. Así un cambio de estado no se pierde a mitad de camino ni compite con otra escritura.</p></div></div>
+            <div class="decision"><span class="mono">04</span><div><h3 data-i18n="d4.title">Un solo dueño del POST</h3><p data-i18n="d4.body">La petición vive en <code class="inline">api.js</code> y la ejecuta únicamente el Service Worker. No hay dos caminos de envío que puedan duplicar pedidos; el bloqueo <code class="inline">activeSync</code> evita disparos concurrentes.</p></div></div>
+            <div class="decision"><span class="mono">05</span><div><h3 data-i18n="d5.title">FIFO y reintentos acotados</h3><p data-i18n="d5.body">Los registros se ordenan por fecha y se encadenan con promesas, uno por uno. Después de cinco intentos el pedido queda en error con su mensaje, sin bloquear a los demás.</p></div></div>
+
+            <div class="code">
+              <div class="code__head"><span data-i18n="code.title">Registro en la cola</span><span>js/outbox-repo.js</span></div>
+              <pre><code>{
+  <span class="k">id</span>: 1,
+  <span class="k">clientId</span>: <span class="s">"uuid-v4"</span>,          <span class="c">// idempotencia</span>
+  <span class="k">method</span>: <span class="s">"POST"</span>,
+  <span class="k">payload</span>: { cliente, producto, cantidad, notas },
+  <span class="k">status</span>: <span class="s">"pendiente"</span>,      <span class="c">// pendiente | enviado | error</span>
+  <span class="k">attempts</span>: 0,                  <span class="c">// máximo 5</span>
+  <span class="k">createdAt</span>: <span class="s">"2026-11-16T..."</span>,
+  <span class="k">lastError</span>: <span class="k">null</span>
+}</code></pre>
+            </div>
+
+            <figure class="figure-detail">
+              <div class="figure-detail__frame"><img src="../assets/img/outbox-error.png" alt="Cola de pedidos con dos registros en error tras una falla de red simulada" width="1600" height="1000" loading="eager"></div>
+              <figcaption data-i18n="figure.caption">Fig. 02 — Fallo simulado: los pedidos quedan en error con su motivo y se pueden reintentar</figcaption>
+            </figure>
+          </section>
+
+          <section class="chapter" id="prueba" aria-labelledby="prueba-title">
+            <div class="chapter__head"><span class="chapter__num mono">04</span><h2 id="prueba-title" data-i18n="ch4.title">Pruébalo</h2></div>
+            <p data-i18n="ch4.p1">La demo pública apunta a una API de pruebas. Para ver el ciclo completo con el mock incluido, basta con levantar el servidor local del repositorio.</p>
+            <ol class="steps">
+              <li data-i18n="s1">Abre la demo y activa <strong>Simular caída de red</strong>. El interruptor se guarda en IndexedDB para que el Service Worker también lo respete.</li>
+              <li data-i18n="s2">Crea un pedido. Aparece como <strong>pendiente</strong> con <code>attempts: 0</code> y su payload completo.</li>
+              <li data-i18n="s3">Pulsa <strong>Sincronizar ahora</strong> con la red caída: el registro pasa a <strong>error</strong> y guarda el mensaje.</li>
+              <li data-i18n="s4">Desactiva la simulación y usa <strong>Reintentar</strong>. El pedido vuelve a pendiente y se envía.</li>
+              <li data-i18n="s5">Abre DevTools → Application → IndexedDB → <code>outbox-db</code> para ver los registros reales, no un estado dibujado.</li>
+            </ol>
+            <p style="margin-top:22px" data-i18n="ch4.note">En local: <code class="inline">node tools/server.js</code> y abre <code class="inline">http://localhost:8765/</code>.</p>
+          </section>
+
+          <section class="chapter" id="siguiente" aria-labelledby="siguiente-title">
+            <div class="chapter__head"><span class="chapter__num mono">05</span><h2 id="siguiente-title" data-i18n="ch5.title">Qué sigue</h2></div>
+            <p data-i18n="ch5.p1">Lo que cambiaría antes de llevarlo a producción, y que puedo explicar sin memorizar un diagrama:</p>
+            <ul class="next-list">
+              <li data-i18n="n1">Validación y autenticación reales en el servidor, no solo en el formulario.</li>
+              <li data-i18n="n2">Idempotencia de verdad usando <code class="inline">clientId</code> como clave única en el backend.</li>
+              <li data-i18n="n3">Backoff exponencial y respeto a <code class="inline">Retry-After</code> en lugar de un máximo fijo.</li>
+              <li data-i18n="n4">Expiración de datos sensibles en IndexedDB y <code class="inline">AbortController</code> para cancelar el fetch del timeout.</li>
+              <li data-i18n="n5">Métricas y alertas cuando un pedido agota los intentos automáticos.</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="case__end">
+      <p data-i18n="end.text">¿Quieres ver el código o probar la demo?</p>
+      <a class="mono" href="../#contact" data-i18n="end.link">Volver al portafolio ↗</a>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__top">
+      <p class="mono" data-i18n="foot.colophon">Sitio escrito a mano en HTML, CSS y JavaScript. Sin frameworks, sin cookies, sin rastreadores. Tipografías: Instrument Serif, Inter Tight e IBM Plex Mono.</p>
+      <div class="foot__meta mono">
+        <span><span data-i18n="foot.local">Hora local</span> <time id="clock">—</time></span>
+        <span><span data-i18n="foot.updated">Actualizado</span> 2026.11</span>
+      </div>
+    </div>
+    <div class="foot__bottom mono">
+      <span>© 2026 José Eduardo Casarrubias Aleman</span>
+      <a href="https://github.com/LaloAleman18/LaloAleman18.github.io" target="_blank" rel="noopener">Código fuente ↗</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/case.js"></script>
+</body>
+</html>

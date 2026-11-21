@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lex — JSON a TypeScript, CSV y tabla</title>
+  <meta name="description" content="Convierte JSON en interfaces TypeScript, CSV o tabla. Detecta campos opcionales y une arrays. Todo corre en tu navegador.">
+  <meta name="theme-color" content="#e7e4dc">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../../" title="Volver al portafolio">LEX<span>_</span></a>
+    <p class="top__tag">JSON → TypeScript / CSV / tabla</p>
+    <p class="top__badge mono"><i aria-hidden="true"></i> 100% local</p>
+  </header>
+
+  <main class="workspace">
+    <section class="pane pane--input" aria-labelledby="input-label">
+      <header class="pane__head">
+        <h1 id="input-label" class="pane__label mono">Entrada · JSON</h1>
+        <div class="pane__actions">
+          <button type="button" data-act="sample">Ejemplo</button>
+          <button type="button" data-act="format">Formatear</button>
+          <button type="button" data-act="clear">Limpiar</button>
+        </div>
+      </header>
+
+      <div class="editor">
+        <div class="gutter" id="gutter" aria-hidden="true">1</div>
+        <textarea id="input" spellcheck="false" wrap="off" aria-label="JSON de entrada" placeholder="Pega un JSON aquí…"></textarea>
+      </div>
+
+      <footer class="pane__foot">
+        <label class="field">Raíz <input id="root-name" value="Root" spellcheck="false" autocomplete="off"></label>
+        <label class="check"><input type="checkbox" id="optional" checked> Campos opcionales</label>
+        <span class="mono pane__meta" id="input-meta">1 línea</span>
+      </footer>
+    </section>
+
+    <section class="pane pane--output" aria-labelledby="output-label">
+      <header class="pane__head pane__head--tabs">
+        <h2 id="output-label" class="sr-only">Salida</h2>
+        <div class="tabs" role="tablist" aria-label="Formato de salida">
+          <button type="button" role="tab" data-tab="ts" aria-selected="true" aria-controls="out-code">TypeScript</button>
+          <button type="button" role="tab" data-tab="csv" aria-selected="false" aria-controls="out-code">CSV</button>
+          <button type="button" role="tab" data-tab="table" aria-selected="false" aria-controls="out-table">Tabla</button>
+        </div>
+        <button type="button" class="copy" id="copy">Copiar</button>
+      </header>
+
+      <div class="output">
+        <pre id="out-code" class="code" tabindex="0" aria-live="polite"></pre>
+        <div id="out-table" class="table-wrap" role="tabpanel" hidden></div>
+      </div>
+
+      <footer class="pane__foot status" id="status">
+        <span class="status__left"><i id="status-dot" class="status__dot"></i><span id="status-text">Listo.</span></span>
+        <span class="mono status__meta" id="status-meta">Ctrl + Enter</span>
+      </footer>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Nada sale de tu navegador. Sin red, sin analytics, sin cuentas.</p>
+    <p class="mono">Lex · <a href="../../">Portafolio</a> · <span id="clock">—</span></p>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
