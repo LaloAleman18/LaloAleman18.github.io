@@ -272,6 +272,18 @@
           </div>
         </a>
       </div>
+
+      <div class="bitacora reveal">
+        <p class="kicker mono" data-i18n="bitacora.title">Bitácora de taller</p>
+        <p class="bitacora__intro" data-i18n="bitacora.intro">Cinco proyectos hechos en orden. Aquí están las decisiones y los límites, no solo el resultado final.</p>
+        <ol class="bitacora__lista">
+          <li><time class="mono">2026.11.20</time><strong>TaskFlow API</strong><span data-i18n="bitacora.1">Guardé en un archivo JSON para no depender de una base externa. El punto delicado fue la escritura concurrente: por eso uso archivo temporal y renombrado.</span></li>
+          <li><time class="mono">2026.11.20</time><strong>Notas PWA</strong><span data-i18n="bitacora.2">Quise que una nota escrita sin red no se perdiera. Lo más difícil fue que la página y el Service Worker compartieran la misma cola de salida.</span></li>
+          <li><time class="mono">2026.11.21</time><strong>Tiendita MX</strong><span data-i18n="bitacora.3">El carrito vive en localStorage: sobrevive al cierre, pero no al cambio de navegador. Dibujé los ocho productos en SVG para no depender de imágenes externas.</span></li>
+          <li><time class="mono">2026.11.21</time><strong>Clima MX</strong><span data-i18n="bitacora.4">La hora de Open-Meteo ya viene en zona local, así que la muestro como texto y no la convierto con Date. Si falla, sale error: nunca invento un clima.</span></li>
+          <li><time class="mono">2026.11.21</time><strong>Snake Neón</strong><span data-i18n="bitacora.5">El bucle salta de celda en celda con requestAnimationFrame. El detalle fino fue evitar los giros de 180° con una cola de direcciones.</span></li>
+        </ol>
+      </div>
     </section>
 
     <section id="about" class="about" aria-labelledby="about-title">

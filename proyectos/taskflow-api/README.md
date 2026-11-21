@@ -109,6 +109,16 @@ proyectos/taskflow-api/
 └── README.md
 ```
 
+## Bitácora del autor
+
+- Guardé en un archivo JSON para no depender de una base externa. El punto
+  delicado fue la escritura concurrente: por eso `store.js` escribe en un
+  archivo temporal y luego lo renombra.
+- La validación está separada del almacén. Así puedo cambiar el origen de
+  datos sin tocar las reglas de negocio.
+- Para producción cambiaría el JSON por PostgreSQL y agregaría idempotencia
+  con una clave única por petición.
+
 ## Despliegue
 
 GitHub Pages solo publica archivos estáticos, por lo que esta API **no se

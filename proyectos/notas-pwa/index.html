@@ -309,6 +309,9 @@
       .nota { grid-template-columns: minmax(0, 1fr); }
       .nota__borrar { justify-self: end; }
     }
+    .nota { max-width: 880px; margin: 0 auto 30px; padding: 16px 18px; border-left: 2px solid var(--accent); background: rgba(217, 161, 95, .05); }
+    .nota span { display: block; font-family: var(--mono); font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .nota p { margin: 0; color: var(--dim); font-size: 13px; line-height: 1.65; }
   </style>
 </head>
 <body>
@@ -344,6 +347,11 @@
       <p class="vacio" id="vacio">Aún no hay notas. Escribe la primera y ciérrala sin miedo: se queda guardada.</p>
     </section>
   </main>
+
+  <aside class="nota">
+    <span>Nota del autor · 2026.11.20</span>
+    <p>Quise que una nota escrita sin red no se perdiera. Lo más difícil fue que la página y el Service Worker compartieran la misma cola de salida. Cambiaría el envío por una API propia.</p>
+  </aside>
 
   <footer class="foot">
     Sin librerías · IndexedDB + patrón outbox + Background Sync<br>

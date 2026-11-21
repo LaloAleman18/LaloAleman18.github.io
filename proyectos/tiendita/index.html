@@ -173,6 +173,9 @@
       .producto__arte svg { width: 70px; height: 70px; }
       .carrito { position: static; }
     }
+    .nota { max-width: 1400px; margin: 0 auto 30px; padding: 16px 18px; border-left: 2px solid var(--accent); background: rgba(180, 85, 46, .05); }
+    .nota span { display: block; font-family: var(--mono); font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .nota p { margin: 0; color: var(--dim); font-size: 13px; line-height: 1.65; }
   </style>
 </head>
 <body>
@@ -223,6 +226,11 @@
       </aside>
     </div>
   </main>
+
+  <aside class="nota">
+    <span>Nota del autor · 2026.11.21</span>
+    <p>El carrito vive en localStorage: aguanta el cierre, pero no el cambio de navegador. Dibujé los ocho productos en SVG para no depender de imágenes externas. Cambiaría la compra simulada por un checkout real.</p>
+  </aside>
 
   <footer class="foot">
     Sin librerías · carrito en localStorage · compra simulada, sin cargo real.
