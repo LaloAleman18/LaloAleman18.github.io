@@ -55,6 +55,7 @@ con Puppeteer, en un directorio temporal fuera del repositorio.
 | Lex | [herramienta](./labs/lex/) | Generación de tipos TypeScript, CSV y tabla desde JSON |
 | TaskFlow API | [código](./proyectos/taskflow-api/) | API REST con Node, Express y persistencia en JSON |
 | Notas PWA | [demo](./proyectos/notas-pwa/) | Notas offline con IndexedDB, outbox y Background Sync |
+| Tiendita MX | [demo](./proyectos/tiendita/) | Catálogo y carrito en localStorage con compra simulada |
 
 Solo se muestran proyectos propios que se pueden defender en una entrevista.
 
