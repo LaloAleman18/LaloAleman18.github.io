@@ -53,6 +53,8 @@ con Puppeteer, en un directorio temporal fuera del repositorio.
 | Terra | [demo](./labs/terra/) | Dashboard con series SVG, filtros, orden y exportación CSV |
 | Rift | [juego](./labs/rift/) | Arcade procedural en canvas con audio sintetizado |
 | Lex | [herramienta](./labs/lex/) | Generación de tipos TypeScript, CSV y tabla desde JSON |
+| TaskFlow API | [código](./proyectos/taskflow-api/) | API REST con Node, Express y persistencia en JSON |
+| Notas PWA | [demo](./proyectos/notas-pwa/) | Notas offline con IndexedDB, outbox y Background Sync |
 
 Solo se muestran proyectos propios que se pueden defender en una entrevista.
 

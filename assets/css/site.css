@@ -465,7 +465,9 @@ ul { padding: 0; list-style: none; }
 .project__plate--rift { background: #07050e; }
 .project__plate--lex { background: #f0eee8; }
 .project__plate--terminal { background: #0b0b0c; }
-.project__plate--terminal figcaption { color: rgba(236, 233, 226, .55); mix-blend-mode: normal; }
+.project__plate--terminal figcaption,
+.project__plate--notas figcaption { color: rgba(236, 233, 226, .55); mix-blend-mode: normal; }
+.project__plate--notas { background: #0b0b0c; }
 
 .project__body {
   position: relative;
