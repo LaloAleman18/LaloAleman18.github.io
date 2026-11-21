@@ -56,6 +56,8 @@ con Puppeteer, en un directorio temporal fuera del repositorio.
 | TaskFlow API | [código](./proyectos/taskflow-api/) | API REST con Node, Express y persistencia en JSON |
 | Notas PWA | [demo](./proyectos/notas-pwa/) | Notas offline con IndexedDB, outbox y Background Sync |
 | Tiendita MX | [demo](./proyectos/tiendita/) | Catálogo y carrito en localStorage con compra simulada |
+| Clima MX | [demo](./proyectos/clima-mx/) | Clima real de cinco ciudades con Open-Meteo y fetch |
+| Snake Neón | [demo](./proyectos/snake-neon/) | Snake en Canvas 2D con niveles, teclado, táctil y récord |
 
 Solo se muestran proyectos propios que se pueden defender en una entrevista.
 

@@ -468,6 +468,10 @@ ul { padding: 0; list-style: none; }
 .project__plate--terminal figcaption,
 .project__plate--notas figcaption { color: rgba(236, 233, 226, .55); mix-blend-mode: normal; }
 .project__plate--notas { background: #0b0b0c; }
+.project__plate--clima { background: #0c1b24; }
+.project__plate--clima figcaption { color: rgba(234, 244, 243, .55); mix-blend-mode: normal; }
+.project__plate--snake { background: #080611; }
+.project__plate--snake figcaption { color: rgba(242, 237, 255, .55); mix-blend-mode: normal; }
 
 .project__body {
   position: relative;
