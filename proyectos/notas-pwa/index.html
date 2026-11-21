@@ -5,22 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Notas PWA — notas que funcionan sin internet</title>
   <meta name="description" content="Aplicación de notas offline con IndexedDB, patrón outbox y Background Sync. Sin librerías.">
-  <meta name="theme-color" content="#0b0b0c">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0b0c'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' fill='%23d9a15f' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#e9e2d3">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e9e2d3'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' fill='%23b4552e' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
   <style>
     :root {
-      --bg: #0b0b0c;
-      --bg-2: #101012;
-      --bg-3: #16181d;
-      --ink: #ece9e2;
-      --dim: #9c988e;
-      --faint: #6d6a63;
-      --line: rgba(236, 233, 226, .14);
-      --line-soft: rgba(236, 233, 226, .07);
-      --accent: #d9a15f;
-      --accent-ink: #1a1208;
-      --ok: #8fb98a;
-      --bad: #d96b6b;
+      --bg: #e9e2d3;
+      --bg-2: #fbf7ee;
+      --bg-3: #f1ead9;
+      --ink: #1d2a24;
+      --dim: #5d6b61;
+      --faint: #8b968d;
+      --line: rgba(29, 42, 36, .16);
+      --line-soft: rgba(29, 42, 36, .08);
+      --accent: #b4552e;
+      --accent-ink: #fff8ed;
+      --ok: #2f6b4f;
+      --bad: #b4453f;
       --mono: ui-monospace, 'Cascadia Mono', Consolas, monospace;
       --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     }
@@ -33,7 +33,7 @@
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(circle at 15% 0%, rgba(217, 161, 95, .07), transparent 45%),
+        radial-gradient(circle at 15% 0%, rgba(180, 85, 46, .08), transparent 45%),
         var(--bg);
       color: var(--ink);
       font-family: var(--sans);
@@ -55,7 +55,7 @@
       gap: 18px;
       padding: 16px clamp(20px, 5vw, 48px);
       border-bottom: 1px solid var(--line);
-      background: rgba(11, 11, 12, .92);
+      background: rgba(249, 245, 236, .92);
       backdrop-filter: blur(8px);
     }
 
@@ -107,9 +107,9 @@
       height: 7px;
       border-radius: 50%;
       background: var(--ok);
-      box-shadow: 0 0 0 3px rgba(143, 185, 138, .14);
+      box-shadow: 0 0 0 3px rgba(47, 107, 79, .16);
     }
-    .status--off .status__dot { background: var(--bad); box-shadow: 0 0 0 3px rgba(217, 107, 107, .14); }
+    .status--off .status__dot { background: var(--bad); box-shadow: 0 0 0 3px rgba(180, 69, 63, .16); }
 
     .app {
       max-width: 880px;
@@ -125,7 +125,8 @@
 
     .panel {
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255, 255, 255, .02), transparent 60%), var(--bg-2);
+      background: var(--bg-2);
+      box-shadow: 0 10px 30px rgba(29, 42, 36, .06);
       padding: 20px;
     }
 
@@ -143,11 +144,17 @@
       width: 100%;
       min-height: 130px;
       resize: vertical;
-      padding: 13px 14px;
+      padding: 12px 14px 12px 38px;
       border: 1px solid var(--line);
-      background: var(--bg);
+      background:
+        linear-gradient(90deg, transparent 33px, rgba(180, 85, 46, .30) 33px, rgba(180, 85, 46, .30) 34px, transparent 34px),
+        repeating-linear-gradient(180deg, transparent 0 25px, rgba(29, 42, 36, .11) 25px 26px),
+        #fffdf7;
+      background-position: 0 12px, 0 12px, 0 0;
       color: var(--ink);
-      line-height: 1.55;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 26px;
     }
     textarea::placeholder { color: var(--faint); }
     textarea:focus { border-color: var(--accent); outline: none; }
@@ -194,8 +201,8 @@
       font-size: 12.5px;
       color: var(--dim);
     }
-    .mensaje--error { color: #e0a0a0; }
-    .mensaje--ok { color: #a9d3a3; }
+    .mensaje--error { color: #b4453f; }
+    .mensaje--ok { color: #2f6b4f; }
 
     .lista__head {
       display: flex;
@@ -229,20 +236,41 @@
       gap: 12px;
     }
     .nota {
+      position: relative;
       border: 1px solid var(--line-soft);
-      background: var(--bg);
-      padding: 14px;
+      background:
+        repeating-linear-gradient(180deg, transparent 0 25px, rgba(29, 42, 36, .10) 25px 26px),
+        #fffdf7;
+      background-position: 0 16px;
+      padding: 16px 14px 16px 38px;
+      box-shadow: 1px 3px 0 rgba(29, 42, 36, .05), 0 8px 18px rgba(29, 42, 36, .07);
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 12px;
       align-items: start;
     }
+    .nota::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 26px;
+      width: 56px;
+      height: 16px;
+      background: rgba(217, 161, 95, .38);
+      border: 1px solid rgba(29, 42, 36, .06);
+      transform: rotate(-3deg);
+    }
+    .nota:nth-child(odd) { transform: rotate(-.4deg); }
+    .nota:nth-child(even) { transform: rotate(.3deg); }
+    .nota:nth-child(even)::before { transform: rotate(2deg); }
     .nota__cuerpo { min-width: 0; }
     .nota__texto {
       margin: 0;
       white-space: pre-wrap;
       overflow-wrap: anywhere;
-      line-height: 1.55;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 26px;
     }
     .nota__meta {
       display: flex;
@@ -264,8 +292,8 @@
       text-transform: uppercase;
       color: var(--dim);
     }
-    .badge--pendiente { border-color: rgba(217, 161, 95, .45); color: var(--accent); }
-    .badge--sincronizada { border-color: rgba(143, 185, 138, .45); color: #a9d3a3; }
+    .badge--pendiente { border-color: rgba(180, 85, 46, .45); color: var(--accent); }
+    .badge--sincronizada { border-color: rgba(47, 107, 79, .45); color: #2f6b4f; }
     .nota__fecha { font-family: var(--mono); font-size: 8.5px; color: var(--faint); letter-spacing: .06em; }
     .nota__borrar {
       border: 0;
@@ -309,9 +337,9 @@
       .nota { grid-template-columns: minmax(0, 1fr); }
       .nota__borrar { justify-self: end; }
     }
-    .nota { max-width: 880px; margin: 0 auto 30px; padding: 16px 18px; border-left: 2px solid var(--accent); background: rgba(217, 161, 95, .05); }
-    .nota span { display: block; font-family: var(--mono); font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-    .nota p { margin: 0; color: var(--dim); font-size: 13px; line-height: 1.65; }
+    .nota-autor { max-width: 880px; margin: 0 auto 30px; padding: 16px 18px; border-left: 2px solid var(--accent); background: var(--bg-2); }
+    .nota-autor span { display: block; font-family: var(--mono); font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .nota-autor p { margin: 0; color: var(--dim); font-size: 13px; line-height: 1.65; }
   </style>
 </head>
 <body>
@@ -348,7 +376,7 @@
     </section>
   </main>
 
-  <aside class="nota">
+  <aside class="nota-autor">
     <span>Nota del autor · 2026.11.20</span>
     <p>Quise que una nota escrita sin red no se perdiera. Lo más difícil fue que la página y el Service Worker compartieran la misma cola de salida. Cambiaría el envío por una API propia.</p>
   </aside>

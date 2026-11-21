@@ -72,8 +72,19 @@
     panelClima.hidden = cual !== 'clima';
   }
 
+  /* El fondo reacciona al clima: no es decoración fija, viene del dato. */
+  function cielo(codigo) {
+    if (codigo === 0 || codigo === 1) return 'radial-gradient(circle at 75% -8%, rgba(255, 186, 105, .30), transparent 55%), #16211f';
+    if ([2, 3, 45, 48].indexOf(codigo) !== -1) return 'radial-gradient(circle at 75% -8%, rgba(196, 210, 220, .20), transparent 55%), #121d25';
+    if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].indexOf(codigo) !== -1) return 'radial-gradient(circle at 75% -8%, rgba(70, 140, 205, .32), transparent 58%), #081724';
+    if ([71, 73, 75, 77, 85, 86].indexOf(codigo) !== -1) return 'radial-gradient(circle at 75% -8%, rgba(205, 230, 255, .28), transparent 58%), #101d2b';
+    if ([95, 96, 99].indexOf(codigo) !== -1) return 'radial-gradient(circle at 75% -8%, rgba(160, 100, 220, .32), transparent 58%), #0b1020';
+    return 'radial-gradient(circle at 75% -8%, rgba(127, 200, 194, .18), transparent 52%), #0c1b24';
+  }
+
   function pintarClima(ciudad, actual) {
     var cond = condicion(actual.weather_code);
+    document.body.style.setProperty('--cielo', cielo(actual.weather_code));
 
     lugar.textContent = ciudad.nombre;
     lugarKicker.textContent = 'Clima actual · ' + ciudad.nombre;
